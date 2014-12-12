@@ -10,8 +10,4 @@ $autoload['config'] = array();
 
 $autoload['language'] = array();
 
-$autoload['model'] = array('DashboardModel');
-
-
-/* End of file autoload.php */
-/* Location: ./application/config/autoload.php */
+$autoload['model'] = array();
