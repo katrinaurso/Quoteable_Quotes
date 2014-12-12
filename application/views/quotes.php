@@ -10,7 +10,10 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Welcome, (NAME)!</h1>
+		<div class="row">
+			<h1 class="col-md-10">Welcome<?php if($name) { echo ', '.$name; } ?>!</h1>
+			<a href="logout"><button>Logout</button></a>
+		</div>
 		<div class="row">
 			<form class="col-md-6" id="quotable" action="#" method="post">
 				<h2>Quotable Quotes</h2>
