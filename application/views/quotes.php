@@ -15,7 +15,7 @@
 			<a href="logout"><button>Logout</button></a>
 		</div>
 		<div class="row">
-			<form class="col-md-6" id="quotable" action="#" method="post">
+			<div class="col-md-6" id="quotable">
 				<h2>Quotable Quotes</h2>
 <?php 	if(!empty($quotes)) {
 			foreach($quotes as $quote) { ?>
@@ -23,27 +23,30 @@
 					<p><?php echo $quote['quoted_by'] ?>:</p>
 					<p><?php echo $quote['quote'] ?></p>
 					<p><?php echo $quote['alias'] ?></p>
-					<input type="hidden" name="quote_id" value="<?php echo $quote['id'] ?>">
-					<input type="submit" value="add" name="Add to My List">
+					<form action="/add_to" method="post">
+						<input type="hidden" name="quote_id" value="<?php echo $quote['id'] ?>">
+						<input type="submit" value="Add to My List">
+					</form>
 				</div>
 <?php	}
 				} ?>
-			</form>
-			<form class="col-md-6" id="favorites" action="3" method="post">
+			</div>
+			<div class="col-md-6" id="favorites">
 				<h2>Favorite Quotes</h2>
+<?php 	if(!empty($favorites)) {
+			foreach($favorites as $favorite) { ?>
 				<div class="quotes">
-					<p>Random quote from random person that is not already in favorites quote list</p>
-					<p>Posted by (NAME OF POSTER)</p>
-					<input type="hidden" name="quote_id" value="(QUOTE ID)">
-					<input type="submit" value="add" name="Remove From My List">
+					<p><?php echo $favorite['quoted_by'] ?>:</p>
+					<p><?php echo $favorite['quote'] ?></p>
+					<p><?php echo $favorite['alias'] ?></p>
+					<form action="/remove_from" method="post">
+						<input type="hidden" name="quote_id" value="<?php echo $favorite['id'] ?>">
+						<input type="submit" value="Remove From My List">
+					</form>
 				</div>
-				<div class="quotes">
-					<p>Random quote from random person that is not already in favorites quote list</p>
-					<p>Posted by (NAME OF POSTER)</p>
-					<input type="hidden" name="quote_id" value="(QUOTE ID)">
-					<input type="submit" value="add" name="Remove From My List">
-				</div>
-			</form>
+<?php		}
+		} ?>
+			</div>
 		</div>
 		<div class="row">
 			<form class="col-md-offset-2" action="/add" method="post">
@@ -52,7 +55,7 @@
 				<p>Quoted By: <input type="text" name="quoted_by" placeholder="Quoted By"></p>
 				<p>Quote: <input type="text" name="quote" placeholder="Quote Goes Here..."></p>
 				<input type="submit" value="quote" name="Submit">
-			</form>
+			</div>
 		</div>
 	</div>
 </body>

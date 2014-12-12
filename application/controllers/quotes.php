@@ -13,6 +13,8 @@ class Quotes extends CI_Controller {
 		$display['name'] = $this->session->userdata('name');
 		$display['quotes'] = $this->Quote->get_quotes();
 		$display['quote_errors'] = $this->session->flashdata('quote_errors');
+		$id = $this->session->userdata('id');
+		$display['favorites'] = $this->Quote->get_user_favorites($id);
 		$this->load->view('quotes', $display);		
 	}
 
@@ -28,6 +30,21 @@ class Quotes extends CI_Controller {
 			$quote = $this->Quote->add_quote($post);
 			redirect('quotes');
 		}
+	}
+
+	public function add_to_favorites() {
+		$post = $this->input->post();
+		$post['user_id'] = $this->session->userdata('id');
+		$add = $this->Quote->add_favorite($post);
+		if($add > 0) {
+			redirect('quotes');
+		}
+	}
+
+	public function remove_from_favorites() {
+		$post = $this->input->post('quote_id');
+		$remove = $this->Quote->remove_from_favorites($post);
+		redirect('quotes');
 	}
 
 }
