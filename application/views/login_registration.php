@@ -24,9 +24,9 @@
 				<p>Birthdate: <input type="text" name="birthdate" placeholder="YYYY-MM-DD"></p><!-- Would like to make dropdown -->
 				<input type="submit" name="register" value="Register">
 			</form>
-			<form class="col-md-5" action="#" method="post">
+			<form class="col-md-5" action="/login" method="post">
 				<h2>Login</h2>
-				<p>(ERRORS)</p>
+				<?php if(!empty($login_errors)) { echo $login_errors; } ?>
 				<p>Email: <input type="text" name="email" placeholder="johndoe@example.com"></p>
 				<p>Password: <input type="password" name="password"></p>
 				<input type="submit" name="login" value="Login">

@@ -10,4 +10,4 @@ $autoload['config'] = array();
 
 $autoload['language'] = array();
 
-$autoload['model'] = array('Quote');
+$autoload['model'] = array('User', 'Quote');

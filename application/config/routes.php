@@ -1,7 +1,8 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$route['default_controller'] = "quotes";
-$route['register'] = "quotes/register";
-$route['logout'] = "quotes/logout";
-$route['quotes'] = "quotes/home_page";
+$route['default_controller'] = "users";
+$route['register'] = "users/register";
+$route['login'] = "users/login";
+$route['logout'] = "users/logout";
+$route['quotes'] = "quotes";
 $route['404_override'] = '';
