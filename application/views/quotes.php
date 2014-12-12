@@ -11,30 +11,23 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h1 class="col-md-10">Welcome<?php if($name) { echo ', '.$name; } ?>!</h1>
+			<h1 class="col-md-10">Welcome<?php if(!empty($name)) { echo ', '.$name; } ?>!</h1>
 			<a href="logout"><button>Logout</button></a>
 		</div>
 		<div class="row">
 			<form class="col-md-6" id="quotable" action="#" method="post">
 				<h2>Quotable Quotes</h2>
+<?php 	if(!empty($quotes)) {
+			foreach($quotes as $quote) { ?>
 				<div class="quotes">
-					<p>Random quote from random person that is not already in favorites quote list</p>
-					<p>Posted by (NAME OF POSTER)</p>
-					<input type="hidden" name="quote_id" value="(QUOTE ID)">
+					<p><?php echo $quote['quoted_by'] ?>:</p>
+					<p><?php echo $quote['quote'] ?></p>
+					<p><?php echo $quote['alias'] ?></p>
+					<input type="hidden" name="quote_id" value="<?php echo $quote['id'] ?>">
 					<input type="submit" value="add" name="Add to My List">
 				</div>
-				<div class="quotes">
-					<p>Random quote from random person that is not already in favorites quote list</p>
-					<p>Posted by (NAME OF POSTER)</p>
-					<input type="hidden" name="quote_id" value="(QUOTE ID)">
-					<input type="submit" value="add" name="Add to My List">
-				</div>
-				<div class="quotes">
-					<p>Random quote from random person that is not already in favorites quote list</p>
-					<p>Posted by (NAME OF POSTER)</p>
-					<input type="hidden" name="quote_id" value="(QUOTE ID)">
-					<input type="submit" value="add" name="Add to My List">
-				</div>
+<?php	}
+				} ?>
 			</form>
 			<form class="col-md-6" id="favorites" action="3" method="post">
 				<h2>Favorite Quotes</h2>
@@ -53,9 +46,9 @@
 			</form>
 		</div>
 		<div class="row">
-			<form class="col-md-offset-2" action="#" method="post">
+			<form class="col-md-offset-2" action="/add" method="post">
 				<h2>Contribute a Quote:</h2>
-				<p>(ERRORS)</p>
+<?php 			if(!empty($quote_errors)) { echo $quote_errors; } ?>
 				<p>Quoted By: <input type="text" name="quoted_by" placeholder="Quoted By"></p>
 				<p>Quote: <input type="text" name="quote" placeholder="Quote Goes Here..."></p>
 				<input type="submit" value="quote" name="Submit">

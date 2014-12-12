@@ -4,5 +4,7 @@ $route['default_controller'] = "users";
 $route['register'] = "users/register";
 $route['login'] = "users/login";
 $route['logout'] = "users/logout";
+
 $route['quotes'] = "quotes";
+$route['add'] = "quotes/add_quote";
 $route['404_override'] = '';
