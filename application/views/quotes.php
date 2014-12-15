@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Welcome</title>
+	<title>Quotes</title>
 	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/assets/css/bootstrap-theme.min.css">
 	<script src="/assets/js/bootstrap.min.js"></script>
@@ -11,8 +11,8 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h1 class="col-md-10">Welcome<?php if(!empty($name)) { echo ', '.$name; } ?>!</h1>
-			<a href="logout"><button>Logout</button></a>
+			<h1 class="col-md-11">Welcome<?php if(!empty($name)) { echo ', '.$name; } ?>!</h1>
+			<a href="logout"><button class="btn btn-danger">Logout</button></a>
 		</div>
 		<div class="row">
 			<div class="col-md-6" id="quotable">
@@ -25,7 +25,7 @@
 					<p><?php echo $quote['alias'] ?></p>
 					<form action="/add_to" method="post">
 						<input type="hidden" name="quote_id" value="<?php echo $quote['id'] ?>">
-						<input type="submit" value="Add to My List">
+						<input class="btn btn-primary" type="submit" value="Add to My List">
 					</form>
 				</div>
 <?php	}
@@ -41,20 +41,18 @@
 					<p><?php echo $favorite['alias'] ?></p>
 					<form action="/remove_from" method="post">
 						<input type="hidden" name="quote_id" value="<?php echo $favorite['id'] ?>">
-						<input type="submit" value="Remove From My List">
+						<input class="btn btn-success" type="submit" value="Remove From My List">
 					</form>
 				</div>
 <?php		}
 		} ?>
 			</div>
-		</div>
-		<div class="row">
-			<form class="col-md-offset-2" action="/add" method="post">
+			<form class="add" action="/add" method="post">
 				<h2>Contribute a Quote:</h2>
 <?php 			if(!empty($quote_errors)) { echo $quote_errors; } ?>
-				<p>Quoted By: <input type="text" name="quoted_by" placeholder="Quoted By"></p>
-				<p>Quote: <input type="text" name="quote" placeholder="Quote Goes Here..."></p>
-				<input type="submit" value="quote" name="Submit">
+				<p><input type="text" name="quoted_by" placeholder="Quoted By"></p>
+				<p><input type="text" name="quote" placeholder="Quote Goes Here..."></p>
+				<input class="btn btn-primary" type="submit" value="quote" name="Submit">
 			</div>
 		</div>
 	</div>

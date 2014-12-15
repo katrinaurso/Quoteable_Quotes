@@ -15,21 +15,22 @@
 			<form class="col-md-5" action="/register" method="post">
 				<h2>Register</h2>
 				<?php if(!empty($registration_errors)) { echo $registration_errors; } ?>
-				<p>First Name: <input type="text" name="first_name" placeholder="John"></p>
-				<p>Last Name: <input type="text" name="last_name" placeholder="Doe"></p>
-				<p>Alias: <input type="text" name="alias" placeholder="JohnDoe"></p>
-				<p>Email: <input type="text" name="email" placeholder="johndoe@example.com"></p>
-				<p>Password: <input type="password" name="password"></p>
-				<p>Confirm Password: <input type="password" name="password2"></p>
-				<p>Birthdate: <input type="text" name="birthdate" placeholder="YYYY-MM-DD"></p><!-- Would like to make dropdown -->
-				<input type="submit" name="register" value="Register">
+				<p><input type="text" name="first_name" placeholder="First Name"></p>
+				<p><input type="text" name="last_name" placeholder="Last Name"></p>
+				<p><input type="text" name="alias" placeholder="Alias"></p>
+				<p><input type="text" name="email" placeholder="Email"></p>
+				<p><input type="password" name="password" placeholder="Password"></p>
+				<p><input type="password" name="password2" placeholder="Re-enter Password"></p>
+				<p>Birthdate:</p>
+				<p><input type="date" name="birthdate"></p>
+				<input class="btn btn-primary" type="submit" name="register" value="Register">
 			</form>
 			<form class="col-md-5" action="/login" method="post">
 				<h2>Login</h2>
 				<?php if(!empty($login_errors)) { echo $login_errors; } ?>
-				<p>Email: <input type="text" name="email" placeholder="johndoe@example.com"></p>
-				<p>Password: <input type="password" name="password"></p>
-				<input type="submit" name="login" value="Login">
+				<p><input type="text" name="email" placeholder="Email"></p>
+				<p><input type="password" name="password" placeholder="Password"></p>
+				<input class="btn btn-primary" type="submit" name="login" value="Login">
 			</form>
 		</div>
 	</div>

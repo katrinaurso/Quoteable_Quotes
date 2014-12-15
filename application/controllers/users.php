@@ -19,7 +19,7 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules('email', 'Email Address', 'required|valid_email|is_unique[users.email]');
 		$this->form_validation->set_rules('password', 'Password', 'required|min_length[8]');
 		$this->form_validation->set_rules('password2', 'Confirm Password', 'required|matches[password]');
-		$this->form_validation->set_rules('birthdate', 'Birthdate', 'required'); //Set to valid birthdate?
+		$this->form_validation->set_rules('birthdate', 'Birthdate', 'required');
 		if($this->form_validation->run() == FALSE) {	
 			$this->session->set_flashdata('registration_errors', validation_errors());
 			redirect('');

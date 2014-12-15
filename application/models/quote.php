@@ -12,7 +12,7 @@ class Quote extends CI_Model {
 	public function get_quotes() {
 		$query = "SELECT quotes.id, quoted_by, quote, alias FROM quotes
 				  LEFT JOIN users
-				  ON quotes.user_id = users.id";
+				  ON quotes.user_id = users.id ORDER BY quotes.created_at DESC";
 		return $this->db->query($query)->result_array();
 	}
 
